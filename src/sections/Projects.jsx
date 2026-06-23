@@ -194,7 +194,13 @@ export const Projects = () => {
               style={{ animationDelay: `${idx * 100}ms` }}
             >
               {/* Image */}
-              <div className="relative overflow-hidden aspect-video">
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Visitar sitio de ${project.title}`}
+                className="relative block overflow-hidden aspect-video"
+              >
                 <img
                   src={project.image}
                   alt={project.title}
@@ -203,18 +209,15 @@ export const Projects = () => {
 
                 <div className="absolute inset-0 bg-gradient-to-t from-card via-card/50 to-transparent opacity-60" />
 
-                {/* Link overlay */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-3 glass rounded-full hover:bg-primary hover:text-primary-foreground transition-all"
-                  >
-                    <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                  </a>
+                {/* Icono visible en mobile y con hover en desktop */}
+                <div
+                  className="absolute top-4 right-4 z-20 p-3 glass rounded-full 
+    opacity-100 md:opacity-0 md:group-hover:opacity-100 
+    hover:bg-primary hover:text-primary-foreground transition-all"
+                >
+                  <ArrowUpRight className="w-5 h-5 transition-transform md:group-hover:translate-x-1 md:group-hover:-translate-y-1" />
                 </div>
-              </div>
+              </a>
 
               {/* Content */}
               <div className="p-6 space-y-4">
